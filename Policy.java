@@ -30,7 +30,17 @@ public class Policy
            weightInPounds = 0;
        }
    
-       // Full Constructors (w/ arguments)
+       // Full Constructors (w/ arguments)//
+       /*
+     @param policyNumber The policy number.
+     @param providerName The insurance provider name.
+     @param firstName The policy holder’s first name.
+     @param lastName The policy holder’s last name.
+     @param age The policy holder’s age.
+     @param smokingStatus The smoking status (smoker or non-smoker).
+     @param heightInInches The policy holder’s height in inches.
+     @param weightInPounds The policy holder’s weight in pounds.
+     */
        public Policy(int policyNumber, String providerName, String firstName, String lastName, int age, String smokingStatus, int heightInInches, int weightInPounds) 
        {
           this.policyNumber = policyNumber;
@@ -43,21 +53,45 @@ public class Policy
           this.weightInPounds = weightInPounds;
        }
    
-       // === Getters === // 
+       // === Getters === //
+     /* 
+     @return The policy number.
+     */ 
        public int getPolicyNumber ()
          {return policyNumber;}
+     /*  
+     @return  The provider name.
+     */    
        public String getProviderName () 
          {return providerName;}
+     /* 
+     @return  The policy holder's first name.
+     */     
        public String getFirstName () 
          {return firstName;}
+     /* 
+     @return  The policy holder's last name.
+     */     
        public String getLastName () 
          {return lastName;}
+     /* 
+     @return  The policy holder's age.
+     */     
        public int getAge () 
          {return age;}
+     /* 
+     @return  The policy holder's smoking status (smoker/non-smoker).
+     */     
        public String getSmokingStatus () 
          {return smokingStatus;}
+     /* 
+     @return  The policy holder's height in inches.
+     */     
        public int getHeightInInches () 
          {return heightInInches;}
+     /* 
+     @return  The policy holder's weight in pounds.
+     */     
        public int getWeightInPounds () 
          {return weightInPounds;}
        
@@ -82,6 +116,9 @@ public class Policy
  // === Methods ==== //
  
    // === BMI Calculation Method === //
+   /*
+   @return Calculated BMI as a double. 
+   */
        public double calculateBMI() 
        {
           double calcBMI = ((weightInPounds * 703) / (heightInInches * heightInInches)); 
@@ -91,6 +128,9 @@ public class Policy
        }
 
    // === Policy Price Calculation Method === //
+    /*
+   @return Calculated policy price as a double. 
+   */
        public double calculatePolicyPrice() 
        {
            double calcBMI = calculateBMI();
