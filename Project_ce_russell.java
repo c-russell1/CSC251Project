@@ -48,6 +48,9 @@ public class Project_ce_russell // demo class
         fileInput.close();
 
         // === Display output === //
+        int smokerCounter = 0;
+        int nonSmokerCounter = 0;
+        
         for (Policy policy : policies)
         {
            System.out.println();
@@ -62,6 +65,12 @@ public class Project_ce_russell // demo class
            System.out.println("Policyholder's Weight: " + policy.getWeightInPounds() + " pounds");
            System.out.printf("Policyholder's BMI: %.2f\n", policy.calculateBMI());
            System.out.printf("Policy Price: $%.2f\n", policy.calculatePolicyPrice());
+           
+           if (policy.getSmokingStatus().equalsIgnoreCase("smoker")) smokerCounter++;
+           else nonSmokerCounter++;
+           
+           System.out.println("The number of policies with a smoker is: " + smokerCounter ); 
+           System.out.println("The number of policies with a non-smoker is: " + nonSmokerCounter ); 
         }
     }
 }
