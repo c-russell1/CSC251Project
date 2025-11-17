@@ -4,7 +4,7 @@
 === Insurance Policy Class (model for 1 person) === 
 */
 
-// UPDATED 11.17.25 -- PROJECT PT. 3 // 
+// UPDATED on 11.17.25 -- PROJECT PT. 3 // 
 public class Policy 
 {
 
