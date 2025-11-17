@@ -1,5 +1,6 @@
 // Project pt. 3 //
-// 
+// C. Russell //
+// represents customer w/ policy (policy holder) // 
 
 public class PolicyHolder 
 {
