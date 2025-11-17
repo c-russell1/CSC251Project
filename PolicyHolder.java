@@ -2,9 +2,8 @@
 // C. Russell //
 // represents customer w/ policy (policy holder) // 
 
-public class PolicyHolder 
+public class PolicyHolder
 {
-
     private String firstName;
     private String lastName;
     private int age;
@@ -12,8 +11,7 @@ public class PolicyHolder
     private int heightInInches;
     private int weightInPounds;
 
-    // constructors
-    public PolicyHolder() 
+    public PolicyHolder()
     {
         firstName = "";
         lastName = "";
@@ -24,7 +22,7 @@ public class PolicyHolder
     }
 
     public PolicyHolder(String firstName, String lastName, int age,
-                        String smokingStatus, int heightInInches, int weightInPounds) 
+                         String smokingStatus, int heightInInches, int weightInPounds)
     {
         this.firstName = firstName;
         this.lastName = lastName;
@@ -34,7 +32,6 @@ public class PolicyHolder
         this.weightInPounds = weightInPounds;
     }
 
-    // getters
     public String getFirstName() { return firstName; }
     public String getLastName() { return lastName; }
     public int getAge() { return age; }
@@ -42,24 +39,22 @@ public class PolicyHolder
     public int getHeightInInches() { return heightInInches; }
     public int getWeightInPounds() { return weightInPounds; }
 
-    // BMI
-    public double calculateBMI() 
+    public double calculateBMI()
     {
-        return (weightInPounds * 703.0) / (heightInInches * heightInInches);
+        return (weightInPounds * 703.0) /
+               (heightInInches * heightInInches);
     }
-   
-   // toString step
-   @Override
-   public String toString() 
-   {
-   return "Policy Holder Information:\n" +
-        "First Name: " + firstName + "\n" +
-        "Last Name: " + lastName + "\n" +
-        "Age: " + age + "\n" +
-        "Smoking Status: " + smokingStatus + "\n" +
-        "Height (in): " + heightInInches + "\n" +
-        "Weight (lbs): " + weightInPounds + "\n" +
-        "BMI: " + String.format("%.2f", calculateBMI());
-   }
 
+    @Override
+    public String toString()
+    {
+        return "Policy Holder Information:\n" +
+               "First Name: " + firstName + "\n" +
+               "Last Name: " + lastName + "\n" +
+               "Age: " + age + "\n" +
+               "Smoking Status: " + smokingStatus + "\n" +
+               "Height (in): " + heightInInches + "\n" +
+               "Weight (lbs): " + weightInPounds + "\n" +
+               "BMI: " + String.format("%.2f", calculateBMI());
+    }
 }
