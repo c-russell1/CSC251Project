@@ -11,18 +11,22 @@ public class Policy
     private int policyNumber;
     private String providerName;
     private PolicyHolder holder;   // association
+    private static int policyCount = 0; // counter/tracker
+
 
     public Policy() 
     {
         policyNumber = 0;
         providerName = "";
         holder = new PolicyHolder();
+        policyCount++;
     }
 
     public Policy(int policyNumber, String providerName, PolicyHolder holder) {
         this.policyNumber = policyNumber;
         this.providerName = providerName;
         this.holder = holder;
+        policyCount++;
     }
 
     public int getPolicyNumber() { return policyNumber; }
@@ -49,7 +53,11 @@ public class Policy
 
         return price;
     }
+    // getter for tracker/counter
+    public static int getPolicyCount() {
+    return policyCount;
     
+    // toString
     @Override
     public String toString() 
     {
