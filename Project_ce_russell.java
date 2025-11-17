@@ -1,25 +1,24 @@
 /*
-=== C. Russell ===
-=== Demo Class for Project Pt. 1 === 
-=== Insurance Policy Demo Class === 
+ === C. Russell ===
+ === Demo Class for Project Pt. 3 === 
+ === Insurance Policy Demo Class === 
 */
 
 import java.util.Scanner;
 import java.util.*;
 import java.io.*;
 
-public class Project_ce_russell // demo class
+public class Project_ce_russell
 {
-    public static void main(String[] args) throws IOException // main method
+    public static void main(String[] args) throws IOException
     {
-        // array list to hold Policy objects
         ArrayList<Policy> policies = new ArrayList<>();
 
         // Open file
         File file = new File("PolicyInformation.txt");
         Scanner fileInput = new Scanner(file);
 
-        // Read each policy
+        // Read each record
         while (fileInput.hasNext())
         {
             int policyNumber = fileInput.nextInt();
@@ -36,41 +35,43 @@ public class Project_ce_russell // demo class
             int heightInInches = fileInput.nextInt();
             int weightInPounds = fileInput.nextInt();
 
-            // Skip any blank line between records
+            // Skip blank line between records
             if (fileInput.hasNextLine())
                 fileInput.nextLine();
 
-            // Create Policy object and add to list
-            policies.add(new Policy(policyNumber, providerName, firstName, lastName, 
-                                    age, smokingStatus, heightInInches, weightInPounds));
+            // Create PolicyHolder
+            PolicyHolder holder = new PolicyHolder(
+                firstName, lastName, age,
+                smokingStatus, heightInInches, weightInPounds
+            );
+
+            // Create Policy
+            Policy policy = new Policy(policyNumber, providerName, holder);
+
+            policies.add(policy);
         }
 
         fileInput.close();
 
-        // === Display output === //
-        int smokerCounter = 0;
-        int nonSmokerCounter = 0;
-        
+        // Counters
+        int smokers = 0;
+        int nonSmokers = 0;
+
+        // Print policies and count smoking status
         for (Policy policy : policies)
         {
-           System.out.println();
-           System.out.println("Policy Information:");
-           System.out.println("Policy Number: " + policy.getPolicyNumber());
-           System.out.println("Provider Name: " + policy.getProviderName());
-           System.out.println("Policyholder's First Name: " + policy.getFirstName());
-           System.out.println("Policyholder's Last Name: " + policy.getLastName());
-           System.out.println("Policyholder's Age: " + policy.getAge());
-           System.out.println("Policyholder's Smoking Status: " + policy.getSmokingStatus());
-           System.out.println("Policyholder's Height: " + policy.getHeightInInches() + " inches");
-           System.out.println("Policyholder's Weight: " + policy.getWeightInPounds() + " pounds");
-           System.out.printf("Policyholder's BMI: %.2f\n", policy.calculateBMI());
-           System.out.printf("Policy Price: $%.2f\n", policy.calculatePolicyPrice());
-           
-           if (policy.getSmokingStatus().equalsIgnoreCase("smoker")) smokerCounter++;
-           else nonSmokerCounter++;
-           
-           System.out.println("The number of policies with a smoker is: " + smokerCounter ); 
-           System.out.println("The number of policies with a non-smoker is: " + nonSmokerCounter ); 
+            System.out.println(policy);  // implicit toString()
+            System.out.println();
+
+            if (policy.getPolicyHolder().getSmokingStatus().equalsIgnoreCase("smoker"))
+                smokers++;
+            else
+                nonSmokers++;
         }
+
+        // Totals
+        System.out.println("Number of Policy objects created: " + Policy.getPolicyCount());
+        System.out.println("Number of Policyholders who are smokers: " + smokers);
+        System.out.println("Number of Policyholders who are non-smokers: " + nonSmokers);
     }
 }
