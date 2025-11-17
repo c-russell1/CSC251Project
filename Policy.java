@@ -4,6 +4,56 @@
 === Insurance Policy Class (model for 1 person) === 
 */
 
+// UPDATED 11.17.25 -- PROJECT PT. 3 // 
+public class Policy 
+{
+
+    private int policyNumber;
+    private String providerName;
+    private PolicyHolder holder;   // association
+
+    public Policy() 
+    {
+        policyNumber = 0;
+        providerName = "";
+        holder = new PolicyHolder();
+    }
+
+    public Policy(int policyNumber, String providerName, PolicyHolder holder) {
+        this.policyNumber = policyNumber;
+        this.providerName = providerName;
+        this.holder = holder;
+    }
+
+    public int getPolicyNumber() { return policyNumber; }
+    public String getProviderName() { return providerName; }
+    public PolicyHolder getPolicyHolder() { return holder; }
+
+    // Use PolicyHolder data
+    public double calculatePolicyPrice() 
+    {
+        double bmi = holder.calculateBMI();
+        int age = holder.getAge();
+        String smoking = holder.getSmokingStatus();
+
+        double price = 600.0;
+
+        if (age >= 50)
+            price += 75;
+
+        if (smoking.equalsIgnoreCase("smoker"))
+            price += 100;
+
+        if (bmi >= 35)
+            price += (bmi - 35) * 20;
+
+        return price;
+    }
+}
+
+
+// FORMER CODE - PROJECT PT. 1 & 2 //
+/*
 public class Policy 
 {
     // === Fields === //
@@ -31,16 +81,16 @@ public class Policy
        }
    
        // Full Constructors (w/ arguments)//
-       /*
-     @param policyNumber The policy number.
-     @param providerName The insurance provider name.
-     @param firstName The policy holder’s first name.
-     @param lastName The policy holder’s last name.
-     @param age The policy holder’s age.
-     @param smokingStatus The smoking status (smoker or non-smoker).
-     @param heightInInches The policy holder’s height in inches.
-     @param weightInPounds The policy holder’s weight in pounds.
-     */
+     // @param policyNumber The policy number.
+     // @param providerName The insurance provider name.
+     // @param firstName The policy holder’s first name.
+     // @param lastName The policy holder’s last name.
+     // @param age The policy holder’s age.
+     // @param smokingStatus The smoking status (smoker or non-smoker).
+     // @param heightInInches The policy holder’s height in inches.
+     // @param weightInPounds The policy holder’s weight in pounds.
+    
+     
        public Policy(int policyNumber, String providerName, String firstName, String lastName, int age, String smokingStatus, int heightInInches, int weightInPounds) 
        {
           this.policyNumber = policyNumber;
@@ -53,45 +103,44 @@ public class Policy
           this.weightInPounds = weightInPounds;
        }
    
-       // === Getters === //
-     /* 
-     @return The policy number.
-     */ 
+       // === Getters === // 
+     // @return The policy number.
+      
        public int getPolicyNumber ()
          {return policyNumber;}
-     /*  
-     @return  The provider name.
-     */    
+       
+    //  @return  The provider name.
+         
        public String getProviderName () 
          {return providerName;}
-     /* 
-     @return  The policy holder's first name.
-     */     
+      
+    //  @return  The policy holder's first name.
+          
        public String getFirstName () 
          {return firstName;}
-     /* 
-     @return  The policy holder's last name.
-     */     
+      
+     // @return  The policy holder's last name.
+          
        public String getLastName () 
          {return lastName;}
-     /* 
-     @return  The policy holder's age.
-     */     
+      
+     // @return  The policy holder's age.
+          
        public int getAge () 
          {return age;}
-     /* 
-     @return  The policy holder's smoking status (smoker/non-smoker).
-     */     
+      
+     // @return  The policy holder's smoking status (smoker/non-smoker).
+          
        public String getSmokingStatus () 
          {return smokingStatus;}
-     /* 
-     @return  The policy holder's height in inches.
-     */     
+      
+     // @return  The policy holder's height in inches.
+          
        public int getHeightInInches () 
          {return heightInInches;}
-     /* 
-     @return  The policy holder's weight in pounds.
-     */     
+     
+    //  @return  The policy holder's weight in pounds.
+          
        public int getWeightInPounds () 
          {return weightInPounds;}
        
@@ -116,9 +165,9 @@ public class Policy
  // === Methods ==== //
  
    // === BMI Calculation Method === //
-   /*
-   @return Calculated BMI as a double. 
-   */
+   
+   // @return Calculated BMI as a double. 
+   
        public double calculateBMI() 
        {
           double calcBMI = ((weightInPounds * 703) / (heightInInches * heightInInches)); 
@@ -128,9 +177,9 @@ public class Policy
        }
 
    // === Policy Price Calculation Method === //
-    /*
-   @return Calculated policy price as a double. 
-   */
+   
+  //  @return Calculated policy price as a double. 
+   
        public double calculatePolicyPrice() 
        {
            double calcBMI = calculateBMI();
@@ -144,3 +193,4 @@ public class Policy
 
 }
 
+*/
